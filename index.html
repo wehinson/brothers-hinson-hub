@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Brothers Hinson · Game Development</title>
+<meta name="description" content="The Brothers Hinson — a two-man game workshop. Play our browser games: AbioGenesis, Sweeper Inc., and Snake Forever." />
+<meta property="og:title" content="The Brothers Hinson · Game Development" />
+<meta property="og:description" content="A two-man game workshop. Three browser games, playable now." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%B9%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+<style>
+  :root{
+    color-scheme:dark;
+    --bg:#0a0b0e;
+    --panel:#131519;
+    --ink:#f0f2f5;
+    --ink-soft:#9aa1ac;
+    --ink-faint:#616873;
+    --line:#20232a;
+    --line-strong:#2f333c;
+    --radius:14px;
+    --maxw:960px;
+    --font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --font-mono:ui-monospace,"Cascadia Code","SFMono-Regular",Menlo,Consolas,monospace;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    min-height:100dvh;
+    color:var(--ink);
+    background:var(--bg);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  main{padding-bottom:56px}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:96px 0 48px;border-bottom:1px solid var(--line)}
+  .kicker{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0 0 20px;
+  }
+  h1{
+    font-weight:700;
+    font-size:clamp(2.4rem,6vw,4rem);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    margin:0;
+  }
+  h1 .the{
+    display:block;font-size:.34em;font-weight:600;letter-spacing:.02em;
+    color:var(--ink-soft);margin-bottom:.35em;
+  }
+  .subtitle{
+    margin:20px 0 0;
+    font-family:var(--font-mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .lede{max-width:52ch;margin:22px 0 0;color:var(--ink-soft);font-size:1.05rem}
+
+  /* ---------- games ---------- */
+  .section-label{
+    margin:48px 0 20px;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    display:flex;flex-direction:column;
+    text-decoration:none;color:inherit;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 22px;
+    min-height:250px;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover,.card:focus-visible{
+    transform:translateY(-3px);
+    border-color:var(--accent);
+    box-shadow:0 12px 30px -14px rgba(0,0,0,.6);
+    outline:none;
+  }
+  .icon{font-size:1.6rem;line-height:1;margin-bottom:16px}
+  .codename{
+    display:flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:8px;
+  }
+  .codename .dot{width:8px;height:8px;border-radius:2px;background:var(--accent)}
+  .card h3{font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin:0 0 8px}
+  .card p{margin:0;color:var(--ink-soft);font-size:.94rem;flex:1}
+  .enter{
+    display:inline-flex;align-items:center;gap:7px;margin-top:20px;align-self:flex-start;
+    font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;
+  }
+  .enter .arrow{transition:transform .18s ease}
+  .card:hover .enter .arrow{transform:translateX(4px)}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    margin-top:44px;padding:26px 0 40px;
+    color:var(--ink-faint);font-size:.85rem;
+    display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:space-between;
+  }
+  footer .brand{font-weight:600;color:var(--ink-soft)}
+  footer .meta{display:flex;gap:8px;flex-wrap:wrap}
+  footer .meta .sep{color:var(--line-strong)}
+
+  @media(prefers-reduced-motion:reduce){
+    .card,.enter .arrow{transition:none!important}
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <p class="kicker">Two brothers · one workshop</p>
+      <h1>
+        <span class="the">The Brothers</span>
+        Hinson
+      </h1>
+      <p class="subtitle">Game Development</p>
+      <p class="lede">All games are works in progress.</p>
+    </header>
+
+    <section aria-labelledby="games-label">
+      <p class="section-label" id="games-label">Three games</p>
+      <div class="grid">
+
+        <a class="card" style="--accent:#19b8a6" href="https://wehinson.github.io/IdleLife/" target="_blank" rel="noopener">
+          <div class="icon">🌱</div>
+          <span class="codename"><span class="dot"></span>IdleLife</span>
+          <h3>AbioGenesis</h3>
+          <p>A Hadean garden. Coax the first self-replicating chemistry out of a primordial sea and watch life bootstrap itself, one reaction at a time.</p>
+          <span class="enter">Enter <span class="arrow">→</span></span>
+        </a>
+
+        <a class="card" style="--accent:#e05a53" href="https://wehinson.github.io/IdleSweeo/" target="_blank" rel="noopener">
+          <div class="icon">💣</div>
+          <span class="codename"><span class="dot"></span>IdleSweeo</span>
+          <h3>Sweeper Inc.</h3>
+          <p>Minesweeper goes corporate. Clear the grid, bank the payout, and reinvest — an incremental take on flagging mines and pressing your luck.</p>
+          <span class="enter">Enter <span class="arrow">→</span></span>
+        </a>
+
+        <a class="card" style="--accent:#77b34c" href="https://wehinson.github.io/IdleSnake/" target="_blank" rel="noopener">
+          <div class="icon">🐍</div>
+          <span class="codename"><span class="dot"></span>IdleSnake</span>
+          <h3>Snake Forever</h3>
+          <p>The classic snake, left to its own devices. Set it loose, tune the rules, and watch the coil grow longer while you're away.</p>
+          <span class="enter">Enter <span class="arrow">→</span></span>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      <span class="brand">The Brothers Hinson</span>
+      <span class="meta">
+        <span>Games on GitHub Pages</span><span class="sep">·</span>
+        <span>Hub on Cloudflare</span><span class="sep">·</span>
+        <span>© <span id="year">2026</span></span>
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

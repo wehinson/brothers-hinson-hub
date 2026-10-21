@@ -7,7 +7,7 @@ our three browser games hosted on GitHub Pages.
 | Card | Repo | GitHub Pages URL |
 |------|------|------------------|
 | AbioGenesis | `wehinson/IdleLife`  | https://wehinson.github.io/IdleLife/ |
-| Sweeper Inc. | `wehinson/IdleSweeo` | https://wehinson.github.io/IdleSweeo/ |
+| Sweeper Inc. | `wehinson/IdleSweep` | https://wehinson.github.io/IdleSweep/ |
 | Snake Forever | `wehinson/IdleSnake` | https://wehinson.github.io/IdleSnake/ |
 
 > Update the `href`s in `index.html` if any repo name or Pages URL differs. Each game must have
